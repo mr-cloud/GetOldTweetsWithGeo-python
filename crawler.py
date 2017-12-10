@@ -17,6 +17,7 @@ with open('fail.log', 'a') as f:
     while start < end:
         start_date = time.strftime(t_format, time.localtime(start))
         to_date = time.strftime(t_format, time.localtime(to))
+        print('Processing: ' + start_date + '_' + to_date)
         cmd = base_cmd.format(start_date, to_date, maxtweets, start_date + '_' + to_date)
         try:
             subprocess.check_call(cmd.split(), stdout=subprocess.PIPE)

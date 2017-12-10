@@ -12,6 +12,7 @@ start = time.mktime(time.strptime(start_date, t_format))
 end = time.mktime(time.strptime(end_date, t_format))
 step = 3 * 30 * 24 * 3600
 to = start + step
+metric_s = time.time()
 with open('fail.log', 'a') as f:
     while start < end:
         start_date = time.strftime(t_format, time.localtime(start))
@@ -24,3 +25,5 @@ with open('fail.log', 'a') as f:
             f.flush()
         start = to
         to += step
+metric_e = time.time()
+print('Consume time {} hours.'.format((metric_e - metric_s) / 3600.0))

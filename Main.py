@@ -15,10 +15,10 @@ def main():
 		print("Hashtags: %s\n" % t.hashtags)
 
 	# Example 1 - Get tweets by username
-	tweetCriteria = got.manager.TweetCriteria().setUsername('barackobama').setMaxTweets(1)
+	tweetCriteria = got.manager.TweetCriteria().setUsername('AkilisZhang').setMaxTweets(1)
 	tweet = got.manager.TweetManager.getTweets(tweetCriteria)[0]
 
-	printTweet("### Example 1 - Get tweets by username [barackobama]", tweet)
+	printTweet("### Example 1 - Get tweets by username [AkilisZhang]", tweet)
 
 	# Example 2 - Get tweets by query search
 	tweetCriteria = got.manager.TweetCriteria().setQuerySearch('europe refugees').setSince("2015-05-01").setUntil("2015-09-30").setMaxTweets(1)

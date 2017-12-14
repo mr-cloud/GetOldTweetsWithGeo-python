@@ -2,7 +2,7 @@ import time
 import subprocess
 
 
-maxtweets=10000
+maxtweets=15000
 t_format = '%Y-%m-%d'
 start_date = '2008-12-01'
 end_date = '2017-12-31'
@@ -20,9 +20,9 @@ with open('fail.log', 'a') as f:
         print('Processing: ' + start_date + '_' + to_date)
         cmd = base_cmd.format(start_date, to_date, maxtweets, start_date + '_' + to_date)
         try:
-            subprocess.check_call(cmd.split(), stdout=subprocess.PIPE)
+            subprocess.check_output(cmd.split(), stderr=subprocess.STDOUT)
         except subprocess.CalledProcessError as e:
-            f.write('Crawling failed! start={}, end={}, error={}'.format(start_date, to_date, e.message))
+            f.write('Crawling failed! start={}, end={}, error={}\n'.format(start_date, to_date, e.output))
             f.flush()
         start = to
         to += step

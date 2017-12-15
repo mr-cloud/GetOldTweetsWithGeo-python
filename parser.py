@@ -3,7 +3,7 @@ from textblob import TextBlob
 import json
 
 
-data_dir = 'datasets.test'
+data_dir = 'datasets'
 schema = 'username;date;retweets;favorites;text;geo;mentions;hashtags;id;permalink'
 format = '%s;%s;%d;%d;"%s";%s;%s;%s;"%s";%s'
 BEFORE = ';"'
@@ -20,7 +20,7 @@ rst_file = hashtag + '-' + 'rst.json'
 with open(rst_file, 'w') as output:
     for file in os.listdir(data_dir):
         print('processing {}'.format(file))
-        with open(os.path.join(data_dir, file)) as tweets:
+        with open(os.path.join(data_dir, file), 'r') as tweets:
             line_num = 0
             for line in tweets:
                 if line_num == 0:

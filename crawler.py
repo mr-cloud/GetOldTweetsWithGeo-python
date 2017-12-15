@@ -4,8 +4,8 @@ import subprocess
 
 maxtweets=10000
 t_format = '%Y-%m-%d'
-start_date = '2008-12-01'
-end_date = '2017-12-31'
+start_date = '2010-11-21'
+end_date = '2011-02-19'
 base_cmd = 'python2 Exporter.py --querysearch "#timessquare"  --since {} --until {} --maxtweets {} --output datasets/{}_output_got.csv'
 
 start = time.mktime(time.strptime(start_date, t_format))
@@ -22,7 +22,7 @@ with open('fail.log', 'a') as f:
         try:
             subprocess.check_call(cmd.split(), stdout=subprocess.PIPE)
         except subprocess.CalledProcessError as e:
-            f.write('Crawling failed! start={}, end={}, error={}'.format(start_date, to_date, e.message))
+            f.write('Crawling failed! start={}, end={}, error={}\n'.format(start_date, to_date, e.message))
             f.flush()
         start = to
         to += step

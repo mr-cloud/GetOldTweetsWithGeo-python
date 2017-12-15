@@ -8,7 +8,7 @@ class TweetManager:
 		pass
 		
 	@staticmethod
-	def getTweets(tweetCriteria, receiveBuffer=None, bufferLength=100, proxy=None):
+	def getTweets(tweetCriteria, receiveBuffer=None, bufferLength=100, proxy=None, BLACK_LIST=['timessquarebomb']):
 		refreshCursor = ''
 	
 		results = []
@@ -36,6 +36,8 @@ class TweetManager:
 				tweet = models.Tweet()
 				
 				usernameTweet = tweetPQ("span:first.username.u-dir b").text();
+				if usernameTweet.lower() in BLACK_LIST:
+					continue
 				txt = re.sub(r"\s+", " ", tweetPQ("p.js-tweet-text").text().replace('# ', '#').replace('@ ', '@'));
 				retweets = int(tweetPQ("span.ProfileTweet-action--retweet span.ProfileTweet-actionCount").attr("data-tweet-stat-count").replace(",", ""));
 				favorites = int(tweetPQ("span.ProfileTweet-action--favorite span.ProfileTweet-actionCount").attr("data-tweet-stat-count").replace(",", ""));

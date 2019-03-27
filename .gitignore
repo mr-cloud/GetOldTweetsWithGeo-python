@@ -89,3 +89,9 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+.idea/
+datasets*/
+TimesSquare-rst.json
+timessquare_tweets_analysis.zip
+*.zip
